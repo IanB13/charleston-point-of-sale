@@ -1,12 +1,12 @@
 import {useState} from 'react'
 import './App.css';
 import getAvailableAreas from './services/getAvailableAreas';
-import RoomsList from './components/RoomsList'
+import AreaList from './components/AreaList'
 
 const App = () => {
   const [startDate , setStartDate] = useState(null) 
   const [endDate , setEndDate] = useState(null)
-  const [availRooms, setAvailRooms] = useState(null)
+  const [availAreas, setAvailAreas] = useState(null)
 
   const startBoi = (e) =>{
     console.log("start date", e.target.value)
@@ -18,24 +18,24 @@ const App = () => {
     setEndDate(e.target.value)
   }
 
-  const getRooms = async () =>{
-    const rooms = await getAvailableAreas(startDate,endDate)
-    setAvailRooms(rooms)
+  const getAreas = async () =>{
+    const areas = await getAvailableAreas(startDate,endDate)
+    setAvailAreas(areas)
   }
 
   return (
     <div>
-      Find Avalible Rooms
+      Find Avalible Areas
       <div>
         <input type= "date" onChange = {startBoi}/>
         <input type= "date" onChange = {endBoi} />
       </div>
       <div>
-        <button onClick = {getRooms} >
-          Get Avalible Rooms
+        <button onClick = {getAreas} >
+          Get Avalible Areas
         </button>
       </div>
-      <RoomsList rooms = {availRooms} />
+      <AreaList areas = {availAreas} />
     </div>
   );
 }
