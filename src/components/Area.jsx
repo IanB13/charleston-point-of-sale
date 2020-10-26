@@ -1,6 +1,6 @@
-const Area = ({area}) => {
+import BookingModal from './BookingModal'
 
-
+const Area = ({area, startDate, endDate}) => {
     return(
         <li>
             <details>
@@ -9,7 +9,11 @@ const Area = ({area}) => {
                     Area id is {area.id} <br/>
                     Area status is {area.status}
                 </p>
-                <button>Book Area</button>
+                <BookingModal 
+                area = {area} 
+                startDate={startDate}
+                endDate={endDate}
+                />
             </details>     
         </li>
     )

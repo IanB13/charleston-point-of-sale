@@ -5,6 +5,7 @@ import getBookings from './services/getBookings'
 import AreaList from './components/AreaList'
 import getGuests from './services/getGuests'
 import getRatePlans from './services/getRatePlans'
+import TypeAhead from './components/Typeahead'
 
 const App = () => {
   const [startDate , setStartDate] = useState(null) 
@@ -43,6 +44,7 @@ const App = () => {
 
   return (
     <div>
+      <TypeAhead />
       <h1>Test Area</h1>
       <div>
         <button onClick = {testBookings}>
@@ -65,7 +67,7 @@ const App = () => {
           Get Avalible Areas
         </button>
       </div>
-      <AreaList areas = {availAreas} />
+      <AreaList areas = {availAreas} startDate = {startDate} endDate = {endDate} />
     </div>
   );
 }
