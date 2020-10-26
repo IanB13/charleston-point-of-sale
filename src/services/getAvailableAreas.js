@@ -2,9 +2,9 @@ import getBookings from "./getBookings"
 import getAreas from "./getAreas"
 
 const getAvailableAreas = async (startDate, endDate) =>{
+    console.log("Using API to get avalible rooms")
     //Find Booked Rooms
     const bookings = await getBookings(startDate, endDate)
-
     // bookings statuses that don't mean the area is unavalible:
     const availBookings = [ "NO_SHOW" , "CANCELLED" , "CHECKED_OUT", "TRANSFERRED"]
 
@@ -18,7 +18,6 @@ const getAvailableAreas = async (startDate, endDate) =>{
         .reduce((uniqueAreas, areaId ) => {
             return uniqueAreas.includes(areaId) ? uniqueAreas : [areaId, ...uniqueAreas]
         },[])
-
     const areas = await getAreas()
 
     // Areas statuses that mean the area is unavailable
@@ -26,7 +25,7 @@ const getAvailableAreas = async (startDate, endDate) =>{
      
     const availableAreas = areas
         .filter(area => {
-            return !unavailAreas.includes(area.status) || !bookedAreas.includes(area.id)
+            return !(unavailAreas.includes(area.status) || bookedAreas.includes(area.id))
         })
 
     return availableAreas
