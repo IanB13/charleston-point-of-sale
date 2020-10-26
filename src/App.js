@@ -1,7 +1,10 @@
 import {useState} from 'react'
 import './App.css';
 import getAvailableAreas from './services/getAvailableAreas';
+import getBookings from './services/getBookings'
 import AreaList from './components/AreaList'
+import getGuests from './services/getGuests'
+import getRatePlans from './services/getRatePlans'
 
 const App = () => {
   const [startDate , setStartDate] = useState(null) 
@@ -22,9 +25,36 @@ const App = () => {
     const areas = await getAvailableAreas(startDate,endDate)
     setAvailAreas(areas)
   }
+  //Testing THINGS
+  const testBookings = async () =>{
+    console.log(await getBookings())
+  }
+
+  const testGuests = async () =>{
+    console.log("getting guests")
+    console.log( await getGuests())
+  }
+
+  const testRatePlans = async () => {
+    console.log("getting rate plans")
+    console.log(await getRatePlans() )
+  }
+  //END testing things 
 
   return (
     <div>
+      <h1>Test Area</h1>
+      <div>
+        <button onClick = {testBookings}>
+          Test booking
+        </button> <br/>
+        <button onClick = {testGuests}>
+          Test Guests
+        </button> <br/>
+        <button onClick = {testRatePlans}>
+          Test rate plans
+        </button> <br/>
+      </div>
       Find Avalible Areas
       <div>
         <input type= "date" onChange = {changeStartDate}/>
