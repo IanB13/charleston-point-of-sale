@@ -13,7 +13,7 @@ const getAvailableAreas = async (startDate, endDate) =>{
         return !availBookings.includes(booking.status)
         })
         .map(
-            booking => booking.areaId
+            booking => booking.requestedAreaTypeId
         )
         .reduce((uniqueAreas, areaId ) => {
             return uniqueAreas.includes(areaId) ? uniqueAreas : [areaId, ...uniqueAreas]

@@ -1,6 +1,6 @@
 import Area from './Area'
 
-const AreaList = ({ areas, startDate, endDate }) => {
+const AreaList = ({ areas, startDate, endDate, setMessage }) => {
     console.log(areas)
     if (areas) {
         return (
@@ -12,6 +12,7 @@ const AreaList = ({ areas, startDate, endDate }) => {
                             area={area}
                             startDate={startDate}
                             endDate={endDate}
+                            setMessage = {setMessage}
                         />
                 )})}
             </ul>

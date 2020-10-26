@@ -1,15 +1,23 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import './App.css';
 import getAvailableAreas from './services/getAvailableAreas';
 import getBookings from './services/getBookings'
 import AreaList from './components/AreaList'
 import getGuests from './services/getGuests'
 import getRatePlans from './services/getRatePlans'
+import Message from './components/BookingMessage'
 
 const App = () => {
   const [startDate , setStartDate] = useState(null) 
   const [endDate , setEndDate] = useState(null)
   const [availAreas, setAvailAreas] = useState(null)
+  const [message, setMessage] = useState(null)
+
+  useEffect(()=>{
+    if(message){
+    setTimeout( ()=>{setMessage(null)},5000)
+    }
+  },[message])
 
   const changeStartDate = (e) =>{
     console.log("start date", e.target.value)
@@ -25,6 +33,7 @@ const App = () => {
     const areas = await getAvailableAreas(startDate,endDate)
     setAvailAreas(areas)
   }
+
   //Testing THINGS
   const testBookings = async () =>{
     console.log(await getBookings(startDate,endDate))
@@ -43,10 +52,14 @@ const App = () => {
 
   return (
     <div>
+      <Message message ={message}/>
       <h1>Test Area</h1>
       <div>
         <button onClick = {testBookings}>
           Test booking
+        </button> <br/>
+        <button onClick = {()=>setMessage(true)}>
+          Test Message
         </button> <br/>
         <button onClick = {testGuests}>
           Test Guests
@@ -65,7 +78,12 @@ const App = () => {
           Get Avalible Areas
         </button>
       </div>
-      <AreaList areas = {availAreas} startDate = {startDate} endDate = {endDate} />
+      <AreaList 
+      areas = {availAreas} 
+      startDate = {startDate} 
+      endDate = {endDate} 
+      setMessage = {setMessage}
+      />
     </div>
   );
 }

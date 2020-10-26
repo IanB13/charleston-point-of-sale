@@ -3,7 +3,7 @@ import { Button, Modal,Input } from 'semantic-ui-react'
 import Typeahead from './Typeahead'
 import createBooking from '../services/createBooking'
 
-const BookingModal = ({area, startDate, endDate }) => {
+const BookingModal = ({area, startDate, endDate,setMessage }) => {
   const [open, setOpen] = useState(false)
   const [guestId,setGuestId] = useState(null)
   const [ratePlan, setRatePlan] = useState(null)
@@ -22,6 +22,12 @@ const BookingModal = ({area, startDate, endDate }) => {
     }
   }
   console.log(booking)
+
+  const onSubmit = () =>{
+    createBooking(booking)
+    setMessage(true)
+    setOpen(false)
+  }
 
   return (
     <Modal
@@ -50,7 +56,7 @@ const BookingModal = ({area, startDate, endDate }) => {
           </div>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick = {()=>createBooking(booking)}>
+          <Button onClick = {onSubmit}>
             Book
           </Button>
         </Modal.Actions>

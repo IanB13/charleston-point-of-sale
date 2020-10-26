@@ -1,6 +1,6 @@
 import BookingModal from './BookingModal'
 
-const Area = ({area, startDate, endDate}) => {
+const Area = ({area, startDate, endDate, setMessage}) => {
     return(
         <li>
             <details>
@@ -13,6 +13,7 @@ const Area = ({area, startDate, endDate}) => {
                 area = {area} 
                 startDate={startDate}
                 endDate={endDate}
+                setMessage = {setMessage}
                 />
             </details>     
         </li>
