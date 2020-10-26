@@ -40,12 +40,15 @@ const BookingModal = ({area, startDate, endDate,setMessage, setAvailAreas }) => 
 
   }
 
+  const showColor = ratePlan&&guestId&&adults
+  const buttonColor = showColor?"blue":"grey"
+
   return (
     <Modal
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Book Area</Button>}
+      trigger={<Button color= "blue">Book Area</Button>}
     >
         <Modal.Header>
             Booking {area.name} <span>id: ({area.id})</span>
@@ -67,7 +70,9 @@ const BookingModal = ({area, startDate, endDate,setMessage, setAvailAreas }) => 
           </div>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick = {onSubmit}>
+          <Button 
+          color = {buttonColor}
+          onClick = {onSubmit}>
             Book
           </Button>
         </Modal.Actions>

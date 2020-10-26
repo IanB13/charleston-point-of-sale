@@ -1,11 +1,9 @@
 import {useEffect, useState} from 'react'
 import './App.css';
 import getAvailableAreas from './services/getAvailableAreas';
-import getBookings from './services/getBookings'
 import AreaList from './components/AreaList'
-import getGuests from './services/getGuests'
-import getRatePlans from './services/getRatePlans'
 import Message from './components/BookingMessage'
+import {Button,Input} from "semantic-ui-react"
 
 const App = () => {
   const [startDate , setStartDate] = useState(null) 
@@ -33,50 +31,19 @@ const App = () => {
     const areas = await getAvailableAreas(startDate,endDate)
     setAvailAreas(areas)
   }
-
-  //Testing THINGS
-  const testBookings = async () =>{
-    console.log(await getBookings(startDate,endDate))
-  }
-
-  const testGuests = async () =>{
-    console.log("getting guests")
-    console.log( await getGuests())
-  }
-
-  const testRatePlans = async () => {
-    console.log("getting rate plans")
-    console.log(await getRatePlans() )
-  }
-  //END testing things 
+  const showColor = startDate&&endDate 
+  const buttonColor = showColor?"blue":"grey"
 
   return (
     <div>
       <Message message ={message}/>
-      <h1>Test Area</h1>
+      <h1>Find Available Areas</h1>
       <div>
-        <button onClick = {testBookings}>
-          Test booking
-        </button> <br/>
-        <button onClick = {()=>setMessage(true)}>
-          Test Message
-        </button> <br/>
-        <button onClick = {testGuests}>
-          Test Guests
-        </button> <br/>
-        <button onClick = {testRatePlans}>
-          Test rate plans
-        </button> <br/>
-      </div>
-      Find Avalible Areas
-      <div>
-        <input type= "date" onChange = {changeStartDate}/>
-        <input type= "date" onChange = {changeEndDate} />
-      </div>
-      <div>
-        <button onClick = {getAreas} >
+        <Input type= "date" onChange = {changeStartDate}/>
+        <Input type= "date" onChange = {changeEndDate} />
+        <Button color = {buttonColor} onClick = {getAreas} >
           Get Avalible Areas
-        </button>
+        </Button>
       </div>
       <AreaList 
       areas = {availAreas} 
