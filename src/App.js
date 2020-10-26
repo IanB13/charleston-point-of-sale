@@ -83,6 +83,7 @@ const App = () => {
       startDate = {startDate} 
       endDate = {endDate} 
       setMessage = {setMessage}
+      setAvailAreas = {setAvailAreas}
       />
     </div>
   );
