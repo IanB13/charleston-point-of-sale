@@ -1,16 +1,26 @@
 import { Message } from 'semantic-ui-react'
 
 const BookingMessage = ({message}) =>{ 
-  if(message){
+  console.log(message)
+  if(message?.area?.name){
   return (
   <Message success>
-    <Message.Header>Changes in Service</Message.Header>
+    <Message.Header>Booking successful</Message.Header>
     <p>
-      We updated our privacy policy here to better service our customers. We
-      recommend reviewing the changes.
+      We booked {message.area.name} from {message.startDate} to {message.endDate}
     </p>
   </Message>
 )}
+else if (message){
+  return(
+  <Message error>
+    <Message.Header>Error Occured</Message.Header>
+    <p>
+      {message.message}
+    </p>
+  </Message>
+  )
+}
 else return null
 }
 

@@ -21,12 +21,22 @@ const BookingModal = ({area, startDate, endDate,setMessage }) => {
         id:guestId
     }
   }
-  console.log(booking)
 
-  const onSubmit = () =>{
-    createBooking(booking)
-    setMessage(true)
+  const onSubmit = async () =>{
     setOpen(false)
+    try {
+       const bookConfirm = await createBooking(booking)
+       console.log("booking confirmation is")
+       console.log(bookConfirm)
+       setMessage({
+         area,
+         startDate,
+         endDate
+       })
+    } catch (error) {
+      setMessage(error)
+    }
+
   }
 
   return (
