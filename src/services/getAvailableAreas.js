@@ -26,10 +26,7 @@ const getAvailableAreas = async (startDate, endDate) =>{
      
     const availableAreas = areas
         .filter(area => {
-            return !unavailAreas.includes(area.status)
-        })
-        .filter(area => {
-            return !bookedAreas.includes(area.id)
+            return !unavailAreas.includes(area.status) || !bookedAreas.includes(area.id)
         })
 
     return availableAreas

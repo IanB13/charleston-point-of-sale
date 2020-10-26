@@ -1,8 +1,12 @@
 const Area = ({area}) => {
+    
 
     return(
         <li>
-        {area.name}
+            <details>
+                <summary> {area.name} </summary>
+                <button>Book Area</button>
+            </details>     
         </li>
     )
 }
