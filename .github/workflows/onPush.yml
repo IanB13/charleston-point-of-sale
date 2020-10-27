@@ -19,7 +19,9 @@ jobs:
           heroku_app_name: "charleston-demo" 
           heroku_email: "ianapblair@gmail.com"
           usedocker: true
-          docker_build_args: NODE_ENV
-          env:
-            REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-            REACT_APP_HOTEL_ID: ${{ secrets.REACT_APP_HOTEL_ID }}
+          docker_build_args: |
+            REACT_APP_API_KEY
+            REACT_APP_HOTEL_ID
+        env:
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          REACT_APP_HOTEL_ID: ${{ secrets.REACT_APP_HOTEL_ID }}
