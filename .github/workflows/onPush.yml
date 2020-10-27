@@ -1,0 +1,21 @@
+name: test-on-push
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.5.7
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "charleston-demo" 
+          heroku_email: "ianapblair@gmail.com"
+          usedocker: true
