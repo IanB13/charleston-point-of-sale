@@ -13,7 +13,6 @@ const createBooking = async (data) =>{
     }
 
     const request = await axios.post(URI,data,config)
-    console.log(request.data.data)
     return request.data.data
 }
 

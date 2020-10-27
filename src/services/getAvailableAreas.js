@@ -2,7 +2,6 @@ import getBookings from "./getBookings"
 import getAreas from "./getAreas"
 
 const getAvailableAreas = async (startDate, endDate) =>{
-    console.log("Using API to get avalible rooms")
     //Find Booked Rooms
     const bookings = await getBookings(startDate, endDate)
     // bookings statuses that don't mean the area is unavalible:

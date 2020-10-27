@@ -1,7 +1,6 @@
 import { Message } from 'semantic-ui-react'
 
 const BookingMessage = ({message}) =>{ 
-  console.log(message)
   if(message?.area?.name){
   return (
   <Message success>

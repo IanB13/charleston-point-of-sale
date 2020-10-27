@@ -17,7 +17,6 @@ const getGuests = async (startDate = "1970-01-02", endDate = "2038-01-19") =>{
     }
 
     const request = await axios.get(URI,config)
-    console.log(request.data)
     return request.data.data
 }
 

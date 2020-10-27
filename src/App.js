@@ -18,12 +18,10 @@ const App = () => {
   },[message])
 
   const changeStartDate = (e) =>{
-    console.log("start date", e.target.value)
     setStartDate(e.target.value)
   }
 
   const changeEndDate = (e) =>{
-    console.log("end date",e.target.value)
     setEndDate(e.target.value)
   }
 

@@ -1,7 +1,6 @@
 import Area from './Area'
 
 const AreaList = ({ areas, startDate, endDate, setMessage, setAvailAreas}) => {
-    console.log(areas)
     if (areas) {
         return (
             <ul>

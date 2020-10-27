@@ -26,9 +26,7 @@ const BookingModal = ({area, startDate, endDate,setMessage, setAvailAreas }) => 
     setAvailAreas(null)
     setOpen(false)
     try {
-       const bookConfirm = await createBooking(booking)
-       console.log("booking confirmation is")
-       console.log(bookConfirm)
+     await createBooking(booking)
        setMessage({
          area,
          startDate,
