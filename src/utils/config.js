@@ -8,7 +8,3 @@ export const apiKey = "d2fbff2e3d1204e9522ba1f187199ab5c540d5eb4cfa7a7602d652cb4
 export const hotelId = "e8bd41b0-b98e-4a78-ad14-c7778a00ab00"
 
 export const baseURI = "https://api.getimpala.com/v2/hotel"
-
-
-console.log("key is: ", apiKey)
-console.log("hotel ID is: ",hotelId )
